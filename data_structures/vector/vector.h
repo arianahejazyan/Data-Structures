@@ -18,6 +18,8 @@ struct Vector
 
         void expand();
 
+        void shrink();
+
     public:
 
         Vector();
@@ -50,9 +52,9 @@ struct Vector
 
         T& back() const;
 
-        T* begin() const;
+        Iterator begin() const;
 
-        T* end() const;
+        Iterator end() const;
 };
 
 }; /* namespace */
