@@ -63,31 +63,31 @@ struct Vector
 
 template<typename T>
 size_t Ariana::Vector<T>::capacity() const {
-
+    return m_capacity;
 }
 
 template<typename T>
 size_t Ariana::Vector<T>::size() const {
-
+    return m_size;
 }
 
 template<typename T>
 T& Ariana::Vector<T>::front() const {
-
+    return m_elements[0];
 }
 
 template<typename T>
 T& Ariana::Vector<T>::back() const {
+    return m_elements[m_size-1];
+}
+
+template<typename T>
+Ariana::Vector<T>::Iterator Ariana::Vector<T>::begin() const {
 
 }
 
 template<typename T>
-T* Ariana::Vector<T>::begin() const {
-
-}
-
-template<typename T>
-T* Ariana::Vector<T>::end() const {
+Ariana::Vector<T>::Iterator Ariana::Vector<T>::end() const {
 
 }
 
