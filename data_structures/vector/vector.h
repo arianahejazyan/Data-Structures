@@ -32,7 +32,7 @@ struct Vector
 
         ~Vector();
 
-        T& operator[](size_t index) const;
+        T& operator[](const size_t index) const;
 
         void operator=(Ariana::Vector<T>& other);
 
@@ -94,6 +94,11 @@ Ariana::Vector<T>::Vector(const Ariana::Vector<T>& other): m_size(other.size()),
 template<typename T>
 Ariana::Vector<T>::~Vector() {
     delete[] m_elements;
+}
+
+template<typename T>
+T& Ariana::Vector<T>::operator[](const size_t index) const {
+    return *(m_elements + index); // m_elements[index]
 }
 
 template<typename T>
