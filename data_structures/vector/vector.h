@@ -24,13 +24,17 @@ struct Vector
 
         Vector();
 
-        Vector(std::initializer_list);
+        Vector(const size_t cap);
+
+        Vector(const std::initializer_list<T>& list);
+
+        Vector(const Ariana::Vector<T>& other);
 
         ~Vector();
 
         T& operator[](size_t index) const;
 
-        void operator=(ariana::vector<T>& other);
+        void operator=(Ariana::Vector<T>& other);
 
         void emplace();
 
@@ -60,6 +64,37 @@ struct Vector
 }; /* namespace */
 
 /* ---------------------------------------------------------------------------- */
+
+template<typename T>
+Ariana::Vector<T>::Vector(): m_size(0), m_capacity(1) {
+    m_elements = new T[m_capacity];
+}
+
+template<typename T>
+Ariana::Vector<T>::Vector(const size_t cap): m_size(0), m_capacity(cap) {
+    m_elements = new T[m_capacity];
+}
+
+template<typename T>
+Ariana::Vector<T>::Vector(const std::initializer_list<T>& list): m_size(list.size()), m_capacity(list.size()) {
+    m_elements = new T[m_capacity];
+    for (int i=0; i<list.size(); i++) {
+        m_elements[i] = list[i];
+    }
+}
+
+template<typename T>
+Ariana::Vector<T>::Vector(const Ariana::Vector<T>& other): m_size(other.size()), m_capacity(other.size()) {
+    m_elements = new T[m_capacity];
+    for (int i=0; i<other.size(); i++) {
+        m_elements[i] = other[i];
+    }
+}
+
+template<typename T>
+Ariana::Vector<T>::~Vector() {
+    delete[] m_elements;
+}
 
 template<typename T>
 size_t Ariana::Vector<T>::capacity() const {
