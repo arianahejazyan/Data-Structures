@@ -11,7 +11,7 @@ struct Stack
     private:
         template<typename T> class Node;
 
-        Node<T> m_head;
+        Node<T>* m_head;
         size_t m_size;
     
     public:
@@ -36,6 +36,9 @@ struct Stack
 };
 
 /* ---------------------------------------------------------------------------- */
+
+template<typename T>
+Ariana::Stack<T>::Stack(): n_head(nullptr), m_size(0) {}
 
 template<typename T>
 size_t Ariana::Stack<T>::size() const {
