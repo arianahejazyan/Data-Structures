@@ -9,9 +9,9 @@ template<typename T>
 struct Stack
 {
     private:
-        class Node;
+        template<typename T> class Node;
 
-        Node<T> m_top;
+        Node<T> m_head;
         size_t m_size;
     
     public:
@@ -46,5 +46,22 @@ template<typename T>
 bool Ariana::Stack<T>::empty() const {
     return m_size == 0;
 }
+
+/* ---------------------------------------------------------------------------- */
+
+template<typename T>
+class Node
+{
+    private:
+        T m_data;
+        Node<T>* m_next;
+        Node<T>* m_prev;
+
+    public:
+
+        Node(T data, Node<T>* next, Node<T>* prev): m_data(data), m_next(next), m_prev(prev) {}
+
+        ~Node() {}
+};
 
 /* ---------------------------------------------------------------------------- */
