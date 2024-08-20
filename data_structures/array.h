@@ -43,7 +43,7 @@ Array<T, N>::~Array() {}
 
 template<typename T, std::size_t N>
 T& Array<T, N>::operator[](std::size_t n) {
-    return m_elements[n]; // Overloading the [] operator to return a reference to the element
+    return m_elements[n]; // overloading the [] operator
 }
 
 template<typename T, std::size_t N>
@@ -51,4 +51,4 @@ const T& Array<T, N>::operator[](std::size_t n) const {
     return m_elements[n];
 }
 
-}; /* namespace */
+}; // namespace
