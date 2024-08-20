@@ -5,7 +5,7 @@ namespace Ariana {
 /* ---------------------------------------------------------------------------- */
 
 template<typename T>
-struct Stack
+struct Stack // LIFO
 {
     private:
         struct Node;
