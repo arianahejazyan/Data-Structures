@@ -1,6 +1,7 @@
 #pragma once
 
-namespace Ariana {
+namespace Ariana
+{
 
 template<typename Key, typename Value>
 struct Map // red black tree

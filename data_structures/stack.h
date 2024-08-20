@@ -1,7 +1,8 @@
 #pragma once
 #include <cstddef>
 
-namespace Ariana {
+namespace Ariana
+{
 
 template<typename T>
 struct Stack // LIFO

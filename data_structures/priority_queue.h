@@ -1,6 +1,7 @@
 #pragma once
 
-namespace Ariana {
+namespace Ariana
+{
 
 template<typename T>
 struct PriorityQueue // max heap

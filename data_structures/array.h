@@ -2,7 +2,8 @@
 #include <cstddef>
 #include <initializer_list>
 
-namespace Ariana {
+namespace Ariana
+{
 
 template<typename T, std::size_t N>
 struct Array
