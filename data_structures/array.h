@@ -6,7 +6,7 @@ namespace Ariana
 {
 
 template<typename T, std::size_t N>
-struct Array
+struct Array // static array
 {
     using reference = T&; // type alias
     using const_reference = const T&; // default access is public

@@ -6,7 +6,7 @@ namespace Ariana
 {
 
 template<typename T> // generic structure
-struct Vector
+struct Vector // dynamic array
 {
     private:
 
