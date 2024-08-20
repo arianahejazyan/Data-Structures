@@ -1,5 +1,5 @@
 #pragma once
-#include <cstddef> // C++ Standard Definition for Size and Difference Types
+#include <cstddef>
 #include <initializer_list>
 
 namespace Ariana
