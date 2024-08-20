@@ -64,22 +64,22 @@ struct Vector
         Iterator end() const;
 };
 
-}; /* namespace */
+
 
 /* ---------------------------------------------------------------------------- */
 
 template<typename T>
-Ariana::Vector<T>::Vector(): m_size(0), m_capacity(1) {
+Vector<T>::Vector(): m_size(0), m_capacity(1) {
     m_elements = new T[m_capacity];
 }
 
 template<typename T>
-Ariana::Vector<T>::Vector(const size_t cap): m_size(0), m_capacity(cap) {
+Vector<T>::Vector(const size_t cap): m_size(0), m_capacity(cap) {
     m_elements = new T[m_capacity];
 }
 
 template<typename T>
-Ariana::Vector<T>::Vector(const std::initializer_list<T>& list): m_size(list.size()), m_capacity(list.size()) {
+Vector<T>::Vector(const std::initializer_list<T>& list): m_size(list.size()), m_capacity(list.size()) {
     m_elements = new T[m_capacity];
     for (int i = 0; i < list.size(); i++) {
         m_elements[i] = list[i];
@@ -87,7 +87,7 @@ Ariana::Vector<T>::Vector(const std::initializer_list<T>& list): m_size(list.siz
 }
 
 template<typename T>
-Ariana::Vector<T>::Vector(const Ariana::Vector<T>& other): m_size(other.size()), m_capacity(other.size()) {
+Vector<T>::Vector(const Vector<T>& other): m_size(other.size()), m_capacity(other.size()) {
     m_elements = new T[m_capacity];
     for (int i = 0; i < other.size(); i++) {
         m_elements[i] = other[i];
@@ -95,23 +95,23 @@ Ariana::Vector<T>::Vector(const Ariana::Vector<T>& other): m_size(other.size()),
 }
 
 template<typename T>
-Ariana::Vector<T>::~Vector() {
+Vector<T>::~Vector() {
     delete[] m_elements;
 }
 
 template<typename T>
-T& Ariana::Vector<T>::operator[](const size_t index) const {
+T& Vector<T>::operator[](const size_t index) const {
     return *(m_elements + index); // m_elements[index]
 }
 
 template<typename T>
-Ariana::Vector<T>& Ariana::Vector<T>::operator=(const std::initializer_list<T>& list) {
+Vector<T>& Vector<T>::operator=(const std::initializer_list<T>& list) {
 
     return *this;
 }
 
 template<typename T>
-Ariana::Vector<T>& Ariana::Vector<T>::operator=(const Ariana::Vector<T>& other) {
+Vector<T>& Vector<T>::operator=(const Ariana::Vector<T>& other) {
     if (this != &other) { // self assignment
 
     }
@@ -119,41 +119,43 @@ Ariana::Vector<T>& Ariana::Vector<T>::operator=(const Ariana::Vector<T>& other) 
 }
 
 template<typename T>
-size_t Ariana::Vector<T>::capacity() const {
+size_t Vector<T>::capacity() const {
     return m_capacity;
 }
 
 template<typename T>
-size_t Ariana::Vector<T>::size() const {
+size_t Vector<T>::size() const {
     return m_size;
 }
 
 template<typename T>
-T& Ariana::Vector<T>::front() const {
+T& Vector<T>::front() const {
     return m_elements[0];
 }
 
 template<typename T>
-T& Ariana::Vector<T>::back() const {
+T& Vector<T>::back() const {
     return m_elements[m_size-1];
 }
 
 template<typename T>
-Ariana::Vector<T>::Iterator Ariana::Vector<T>::begin() const {
+Vector<T>::Iterator Vector<T>::begin() const {
 
 }
 
 template<typename T>
-Ariana::Vector<T>::Iterator Ariana::Vector<T>::end() const {
+Vector<T>::Iterator Vector<T>::end() const {
 
 }
 
 /* ---------------------------------------------------------------------------- */
 
 template<typename T>
-class Ariana::Vector<T>::Iterator
+class Vector<T>::Iterator
 {
 
 };
 
 /* ---------------------------------------------------------------------------- */
+
+}; // namespace
