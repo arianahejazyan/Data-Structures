@@ -1,9 +1,8 @@
 #pragma once
 #include <cstddef>
 #include <initializer_list>
-namespace Ariana {
 
-/* ---------------------------------------------------------------------------- */
+namespace Ariana {
 
 template<typename T, std::size_t N>
 struct Array
@@ -28,8 +27,6 @@ struct Array
         const_reference operator[](std::size_t n) const; // const version of subscript (indexing) operator
 };
 
-/* ---------------------------------------------------------------------------- */
-
 template<typename T, std::size_t N>
 Array<T, N>::Array() {}
 
@@ -52,11 +49,5 @@ template<typename T, std::size_t N>
 const T& Array<T, N>::operator[](std::size_t n) const {
     return m_elements[n];
 }
-
-/* ---------------------------------------------------------------------------- */
-
-
-
-/* ---------------------------------------------------------------------------- */
 
 }; /* namespace */
