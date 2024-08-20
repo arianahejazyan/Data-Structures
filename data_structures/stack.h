@@ -101,4 +101,4 @@ struct Stack<T>::Node
         ~Node() {}
 };
 
-}; /* namespace Ariana */
+}; // namespace
