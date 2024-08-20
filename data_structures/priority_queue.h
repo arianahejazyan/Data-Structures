@@ -2,7 +2,7 @@
 
 namespace Ariana {
 
-template<typename T1, typename T2>
+template<typename T>
 struct PriorityQueue // max heap
 {
 
