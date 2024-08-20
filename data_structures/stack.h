@@ -2,8 +2,6 @@
 
 namespace Ariana {
 
-/* ---------------------------------------------------------------------------- */
-
 template<typename T>
 struct Stack // LIFO
 {
@@ -34,8 +32,6 @@ struct Stack // LIFO
 
         bool empty() const;
 };
-
-/* ---------------------------------------------------------------------------- */
 
 template<typename T>
 Stack<T>::Stack(): m_head(nullptr), m_size(0) {}
@@ -92,8 +88,6 @@ bool Stack<T>::empty() const {
     return m_size == 0;
 }
 
-/* ---------------------------------------------------------------------------- */
-
 template<typename T>
 struct Stack<T>::Node
 {
@@ -105,7 +99,5 @@ struct Stack<T>::Node
 
         ~Node() {}
 };
-
-/* ---------------------------------------------------------------------------- */
 
 }; /* namespace Ariana */

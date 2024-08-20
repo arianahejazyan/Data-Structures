@@ -1,8 +1,6 @@
 #pragma once
 #include <initializer_list>
 
-/* ---------------------------------------------------------------------------- */
-
 namespace Ariana 
 {
 
@@ -63,10 +61,6 @@ struct Vector
 
         Iterator end() const;
 };
-
-
-
-/* ---------------------------------------------------------------------------- */
 
 template<typename T>
 Vector<T>::Vector(): m_size(0), m_capacity(1) {
@@ -148,14 +142,10 @@ Vector<T>::Iterator Vector<T>::end() const {
 
 }
 
-/* ---------------------------------------------------------------------------- */
-
 template<typename T>
 class Vector<T>::Iterator
 {
 
 };
-
-/* ---------------------------------------------------------------------------- */
 
 }; // namespace
