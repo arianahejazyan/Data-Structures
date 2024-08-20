@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 #include <initializer_list>
 
 namespace Ariana 
@@ -10,8 +11,8 @@ struct Vector
     private:
 
         T* m_elements;
-        size_t m_capacity;
-        size_t m_size;
+        std::size_t m_capacity;
+        std::size_t m_size;
 
         class Iterator; // forward declartion
 
@@ -23,7 +24,7 @@ struct Vector
 
         Vector();
 
-        Vector(const size_t cap);
+        Vector(const std::size_t cap);
 
         Vector(const std::initializer_list<T>& list);
 
@@ -31,7 +32,7 @@ struct Vector
 
         ~Vector();
 
-        T& operator[](const size_t index) const;
+        T& operator[](const std::size_t index) const;
 
         Ariana::Vector<T>& operator=(const std::initializer_list<T>& list);
 
@@ -68,7 +69,7 @@ Vector<T>::Vector(): m_size(0), m_capacity(1) {
 }
 
 template<typename T>
-Vector<T>::Vector(const size_t cap): m_size(0), m_capacity(cap) {
+Vector<T>::Vector(const std::size_t cap): m_size(0), m_capacity(cap) {
     m_elements = new T[m_capacity];
 }
 
@@ -94,7 +95,7 @@ Vector<T>::~Vector() {
 }
 
 template<typename T>
-T& Vector<T>::operator[](const size_t index) const {
+T& Vector<T>::operator[](const std::size_t index) const {
     return *(m_elements + index); // m_elements[index]
 }
 
