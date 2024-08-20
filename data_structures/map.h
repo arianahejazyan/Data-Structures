@@ -8,4 +8,4 @@ struct Map // red black tree
 
 };
 
-};
+}; // namespace

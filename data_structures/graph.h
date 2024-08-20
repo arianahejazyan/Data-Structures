@@ -8,4 +8,4 @@ struct Graph
 
 };
 
-};
+}; // namespace
