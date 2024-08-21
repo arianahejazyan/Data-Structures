@@ -48,4 +48,14 @@ bool List<T>::empty() const {
     return m_size == 0;
 }
 
+template<typename T>
+struct List<T>::Node
+{
+    public:
+
+        T data;
+        Node* next;
+        Node* prev;
+};
+
 }; // namespace
