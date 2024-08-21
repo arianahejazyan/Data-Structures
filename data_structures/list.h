@@ -21,7 +21,7 @@ struct List // doubly linked list
 
         ~List();
 
-        size_t size() const;
+        size_t size() const; // getter method
 
         bool empty() const;
 };
