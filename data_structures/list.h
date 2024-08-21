@@ -20,6 +20,10 @@ struct List // doubly linked list
         List();
 
         ~List();
+
+        size_t size() const;
+
+        bool empty() const;
 };
 
 template<typename T>
@@ -32,6 +36,16 @@ List<T>::~List() {
         m_head = m_head->next;
         delete tmp;
     }
+}
+
+template<typename T>
+size_t List<T>::size() const {
+    return m_size;
+}
+
+template<typename T>
+bool List<T>::empty() const {
+    return m_size == 0;
 }
 
 }; // namespace
