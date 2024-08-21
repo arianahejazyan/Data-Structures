@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <utility>
 
 namespace Ariana
 {
@@ -56,6 +57,12 @@ struct List<T>::Node
         T data;
         Node* next;
         Node* prev;
+
+        Node(const T& data): data(data), next(nullptr), prev(nullptr) {} // pass by cosnt refence (optimized for lvalue) // copy constructor
+
+        Node(T&& data): data(std::move(data)), next(nullptr), prev(nullptr) {} // pass by rvalue reference (optimized for rvalue) // move constructor
+
+        ~Node() {}
 };
 
 }; // namespace
