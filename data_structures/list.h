@@ -22,6 +22,14 @@ struct List // doubly linked list
 
         ~List();
 
+        T& front();
+
+        T& back();
+
+        const T& front() const;
+
+        const T& back() const;
+
         size_t size() const; // getter method
 
         bool empty() const;
@@ -37,6 +45,26 @@ List<T>::~List() {
         m_head = m_head->next;
         delete tmp;
     }
+}
+
+template<typename T>
+T& List<T>::front() {
+    return m_head->data;
+}
+
+template<typename T>
+T& List<T>::back() {
+    return m_tail->data;
+}
+
+template<typename T>
+const T& List<T>::front() const {
+    return m_head->data;
+}
+
+template<typename T>
+const T& List<T>::back() const {
+    return m_tail->data;
 }
 
 template<typename T>
