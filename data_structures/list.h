@@ -9,7 +9,7 @@ struct List // doubly linked list
 {
     private:
 
-        struct Node;
+        struct Node; // nested structure
 
         Node* m_head;
         Node* m_tail;
