@@ -14,4 +14,13 @@ struct Queue // FIFO
         Node* m_tail;
 };
 
+template<typename T>
+struct Queue<T>::Node
+{
+    public:
+
+        T data;
+        Node* next;
+};
+
 }; // namespace
