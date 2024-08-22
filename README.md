@@ -1,5 +1,5 @@
 [![Lines of Code](https://sloc.xyz/github/arianahejazyan/data-structures-and-algorithms)](https://github.com/yourusername/Data-Structures-and-Algorithms)
-[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=yourusername.Data-Structures-and-Algorithms)](https://github.com/arianahejazyan/data-structures-and-algorithms)
+[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=arianahejazyan.data-structures-and-algorithms)](https://github.com/arianahejazyan/data-structures-and-algorithms)
 [![Test Coverage](https://codecov.io/gh/arianahejazyan/data-structures-and-algorithms/branch/master/graph/badge.svg)](https://codecov.io/gh/arianahejazyan/data-structures-and-algorithms)
 [![Repo Size](https://img.shields.io/github/repo-size/arianahejazyan/data-structures-and-algorithms.svg)](https://github.com/arianahejazyan/data-structures-and-algorithms)
 [![CI - Tests](https://github.com/arianahejazyan/data-structures-and-algorithms/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/arianahejazyan/data-structures-and-algorithms/actions/workflows/unit-tests.yml)
