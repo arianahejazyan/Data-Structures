@@ -22,13 +22,17 @@ struct List // doubly linked list
 
         ~List();
 
+        void push_front(T elemenet);
+
+        void push_back(T element);
+
+        void pop_front();
+
+        void pop_back();
+
         T& front();
 
         T& back();
-
-        const T& front() const;
-
-        const T& back() const;
 
         size_t size() const; // getter method
 
@@ -48,22 +52,70 @@ List<T>::~List() {
 }
 
 template<typename T>
+void List<T>::push_front(T element) {
+    Node* node = new Node(element);
+
+    if (m_head) {
+        node->next = m_head;
+        m_head->prev = node;
+    } else {
+        m_tail = node;
+    }
+
+    m_head = node;
+    ++m_size;
+}
+
+template<typename T>
+void List<T>::push_back(T element) {
+    Node* node = new Node(element);
+
+    if (m_tail) {
+        node->prev = m_tail;
+        m_tail->next = node;
+    } else {
+        m_head = node;
+    }
+
+    m_tail = node;
+    ++m_size;
+}
+
+template<typename T>
+void List<T>::pop_front() {
+    if (m_head) {
+        Node* tmp = m_head;
+        m_head = m_head->next;
+
+        if (m_head) m_head->prev = nullptr;
+        else m_tail = nullptr;
+
+        delete tmp;
+        --m_size;
+    }
+}
+
+template<typename T>
+void List<T>::pop_back() {
+    if (m_tail) {
+        Node* tmp = m_tail;
+        m_tail = m_tail->prev;
+
+        if (m_tail) m_tail->next = nullptr;
+        else m_head = nullptr;
+
+        delete tmp;
+        --m_size;
+    }
+}
+
+template<typename T>
 T& List<T>::front() {
     return m_head->data;
 }
 
 template<typename T>
 T& List<T>::back() {
-    return m_tail->data;
-}
-
-template<typename T>
-const T& List<T>::front() const {
-    return m_head->data;
-}
-
-template<typename T>
-const T& List<T>::back() const {
     return m_tail->data;
 }
 
