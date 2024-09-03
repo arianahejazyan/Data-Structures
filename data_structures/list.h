@@ -40,6 +40,18 @@ struct List // doubly linked list
 };
 
 template<typename T>
+struct List<T>::Node
+{
+    T data;
+    Node* next;
+    Node* prev;
+
+    Node(T data): data(data), next(nullptr), prev(nullptr) {}
+
+    ~Node() {}
+};
+
+template<typename T>
 List<T>::List(): m_head(nullptr), m_tail(nullptr), m_size(0) {}
 
 template<typename T>
@@ -128,21 +140,5 @@ template<typename T>
 bool List<T>::empty() const {
     return m_size == 0;
 }
-
-template<typename T>
-struct List<T>::Node
-{
-    public:
-
-        T data;
-        Node* next;
-        Node* prev;
-
-        Node(const T& data): data(data), next(nullptr), prev(nullptr) {} // pass by cosnt refence (optimized for lvalue) // copy constructor
-
-        Node(T&& data): data(std::move(data)), next(nullptr), prev(nullptr) {} // pass by rvalue reference (optimized for rvalue) // move constructor
-
-        ~Node() {}
-};
 
 }; // namespace
