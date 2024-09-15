@@ -18,6 +18,8 @@ struct Matrix
         Matrix(size_t rows, size_t cols);
 
         ~Matrix();
+
+        T& operator()(size_t i, size_t j) const;
 };
 
 template<typename T>
@@ -28,6 +30,11 @@ Matrix<T>::Matrix(size_t rows, size_t cols): m_rows(rows), m_cols(cols) {
 template<typename T>
 Matrix<T>::~Matrix() {
     delete[] m_elements;
+}
+
+template<typename T>
+T& Matrix<T>::operator()(size_t i, size_t j) const {
+    return m_elements[i * m_cols + j];
 }
 
 }; // namespace
