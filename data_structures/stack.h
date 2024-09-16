@@ -1,19 +1,17 @@
 #pragma once
-#include <cstddef>
-#include <utility>
+#include "utility.h"
 
 namespace Ariana
 {
 
 template<typename T>
-struct Stack // LIFO
+struct Stack
 {
     private:
     
         struct Node;
 
-        Node* m_top;
-        size_t m_size;
+        Node* top;
     
     public:
 
@@ -21,85 +19,67 @@ struct Stack // LIFO
 
         ~Stack();
 
-        void push(const T& element); // lvalue
+        template<typename... Args>
+        void emplace(Args&&... args);
 
-        void push(T&& element); // rvalue, move semantices
+        void push(const T& element);
+
+        void push(T&& element)
 
         void pop();
 
-        T& top() const;
-
-        size_t size() const;
-
-        bool empty() const;
+        T& getTop();
 };
 
 template<typename T>
 struct Stack<T>::Node
 {
-    public:
+    T data;
+    Node* next;
 
-        T data;
-        Node* next;
+    Node(const T& data): data(data), next(nullptr) {}
 
-        Node(const T& data): data(data), next(nullptr) {}
+    Node(T&& data);
 
-        Node(T&& data): data(std::move(data)), next(nullptr) {}
-
-        ~Node() = default;
+    ~Node() = default;
 };
 
 template<typename T>
-Stack<T>::Stack(): m_top(nullptr), m_size(0) {}
+Stack<T>::Stack(): top(nullptr), size(0) {}
 
 template<typename T>
 Stack<T>::~Stack() {
-    while (m_top) {
-        Node* tmp = m_top;
-        m_top = m_top->next;
+    while (top) {
+        Node* tmp = top;
+        top = top->next;
         delete tmp;
     }
+}
+
+template<typename T>
+template<typename... Args>
+void Stack<T>::emplace(Args&&... args) {
+
 }
 
 template<typename T>
 void Stack<T>::push(const T& element) {
-    Node* node = new Node(element);
-    node->next = m_top;
-    m_top = node;
-    m_size++;
+
 }
 
 template<typename T>
 void Stack<T>::push(T&& element) {
-    Node* node = new Node(std::move(element));
-    node->next = m_top;
-    m_top = node;
-    m_size++;
+
 }
 
 template<typename T>
 void Stack<T>::pop() {
-    if (m_top) {
-        Node* tmp = m_top;
-        m_top = m_top->next;
-        delete tmp;
-        m_size--;
-    }
+
 }
 
 template<typename T>
-T& Stack<T>::top() const {
-    return m_top->data;
-}
-
-template<typename T>
-size_t Stack<T>::size() const {
-    return m_size;
-}
-
-template<typename T>
-bool Stack<T>::empty() const {
-    return m_size == 0;
+T& Stack<T>::getTop() {
+    return top->data;
 }
 
 }; // namespace
