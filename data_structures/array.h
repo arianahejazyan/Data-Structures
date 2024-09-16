@@ -1,5 +1,5 @@
 #pragma once
-#include <cstddef>
+#include "utility.h"
 
 namespace Ariana
 {
@@ -10,10 +10,10 @@ struct Array
     private:
 
         T* elements;
-        size_t capacity;
-        size_t size;
+        S capacity;
+        S size;
 
-        void resize();
+        void resize(S n);
 
     public:
 
@@ -21,7 +21,7 @@ struct Array
 
         ~Array();
 
-        T& operator[](size_t index);
+        T& operator[](S index);
 
         template<typename... Args>
         void emplace(Args&&... args);
@@ -32,14 +32,19 @@ struct Array
 
         void pop();
 
-        size_t getCapacity() const;
+        S getCapacity() const;
 
-        size_t getSize() const;
+        S getSize() const;
 
         T* begin();
 
         T* end();
 };
+
+template<typename T>
+void Array<T>::resize(S n) {
+
+}
 
 template<typename T>
 Array<T>::Array(): size(0), capacity(1) {
@@ -52,38 +57,39 @@ Array<T>::~Array() {
 }
 
 template<typename T>
-T& Array<T>::operator[](size_t index) {
+T& Array<T>::operator[](S index) {
     return *(elements + index);
 }
 
 template<typename T>
 template<typename... Args>
 void Array<T>::emplace(Args&&... args) {
-    
+    if (size >= capacity) resize(capacity * 2);
 }
 
 template<typename T>
 void Array<T>::push(const T& element) {
-    
+    if (size >= capacity) resize(capacity * 2);
 }
 
 template<typename T>
 void Array<T>::push(T&& element) {
-    
+    if (size >= capacity) resize(capacity * 2);
 }
 
 template<typename T>
 void Array<T>::pop() {
-    --size;
+    if (size == 0) return;
+    if (--size <= capacity / 4) resize(capacity / 2);
 }
 
 template<typename T>
-size_t Array<T>::getCapacity() const {
+S Array<T>::getCapacity() const {
     return capacity;
 }
 
 template<typename T>
-size_t Array<T>::getSize() const {
+S Array<T>::getSize() const {
     return size;
 }
 
