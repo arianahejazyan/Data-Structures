@@ -1,19 +1,19 @@
 #pragma once
-#include <cstddef>
+#include "utility.h"
 
 namespace Ariana
 {
 
 template<typename T>
-struct List // doubly linked list
+struct List
 {
     private:
 
-        struct Node; // nested structure
+        struct Node;
 
-        Node* m_head;
-        Node* m_tail;
-        size_t m_size;
+        Node* front;
+        Node* back;
+        S size;
     
     public:
 
@@ -21,21 +21,29 @@ struct List // doubly linked list
 
         ~List();
 
-        void push_front(T elemenet);
+        template<typename... Args>
+        void emplace_front(Args&&... args);
 
-        void push_back(T element);
+        template<typename... Args>
+        void emplace_back(Args&&... args);
+
+        void push_front(const T& elemenet);
+
+        void push_front(T&& elemenet);
+
+        void push_back(const T& element);
+
+        void push_back(T&& element);
 
         void pop_front();
 
         void pop_back();
 
-        T& front();
+        T& getFront();
 
-        T& back();
+        T& getBack();
 
-        size_t size() const; // getter method
-
-        bool empty() const;
+        S getSize() const;
 };
 
 template<typename T>
@@ -45,99 +53,80 @@ struct List<T>::Node
     Node* next;
     Node* prev;
 
-    Node(T data): data(data), next(nullptr), prev(nullptr) {}
+    Node(const T& data): data(data), next(nullptr), prev(nullptr) {}
 
-    ~Node() {}
+    Node(T&& data);
+
+    ~Node() = default;
 };
 
 template<typename T>
-List<T>::List(): m_head(nullptr), m_tail(nullptr), m_size(0) {}
+List<T>::List(): front(nullptr), back(nullptr), size(0) {}
 
 template<typename T>
 List<T>::~List() {
-    while (m_head) {
-        Node* tmp = m_head;
-        m_head = m_head->next;
+    while (front) {
+        Node* tmp = front;
+        front = front->next;
         delete tmp;
     }
 }
 
 template<typename T>
-void List<T>::push_front(T element) {
-    Node* node = new Node(element);
+template< typename... Args>
+void List<T>::emplace_front(Args&&... args) {
 
-    if (m_head) {
-        node->next = m_head;
-        m_head->prev = node;
-    } else {
-        m_tail = node;
-    }
-
-    m_head = node;
-    ++m_size;
 }
 
 template<typename T>
-void List<T>::push_back(T element) {
-    Node* node = new Node(element);
+template< typename... Args>
+void List<T>::emplace_back(Args&&... args) {
+ 
+}
 
-    if (m_tail) {
-        node->prev = m_tail;
-        m_tail->next = node;
-    } else {
-        m_head = node;
-    }
+template<typename T>
+void List<T>::push_front(const T& element) {
 
-    m_tail = node;
-    ++m_size;
+}
+
+template<typename T>
+void List<T>::push_front(T&& element) {
+
+}
+
+template<typename T>
+void List<T>::push_back(const T& element) {
+
+}
+
+template<typename T>
+void List<T>::push_back(T&& element) {
+
 }
 
 template<typename T>
 void List<T>::pop_front() {
-    if (m_head) {
-        Node* tmp = m_head;
-        m_head = m_head->next;
 
-        if (m_head) m_head->prev = nullptr;
-        else m_tail = nullptr;
-
-        delete tmp;
-        --m_size;
-    }
 }
 
 template<typename T>
 void List<T>::pop_back() {
-    if (m_tail) {
-        Node* tmp = m_tail;
-        m_tail = m_tail->prev;
 
-        if (m_tail) m_tail->next = nullptr;
-        else m_head = nullptr;
-
-        delete tmp;
-        --m_size;
-    }
 }
 
 template<typename T>
-T& List<T>::front() {
-    return m_head->data;
+T& List<T>::getFront() {
+    return head->data;
 }
 
 template<typename T>
-T& List<T>::back() {
-    return m_tail->data;
+T& List<T>::getBack() {
+    return tail->data;
 }
 
 template<typename T>
-size_t List<T>::size() const {
-    return m_size;
-}
-
-template<typename T>
-bool List<T>::empty() const {
-    return m_size == 0;
+S List<T>::getSize() const {
+    return size;
 }
 
 }; // namespace
