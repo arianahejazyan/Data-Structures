@@ -4,7 +4,7 @@
 
 </div>
 
-## Overview  
+## 🎯 Overview  
  This project is all about learning and growing as a programmer. Here, I've implemented various data structures and algorithms from scratch, purely for educational purposes. It's a simple and efficient collection that I hope can be helpful to others who are on a similar learning journey! 💖
 
 ## Contributions
