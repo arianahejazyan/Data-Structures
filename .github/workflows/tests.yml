@@ -8,4 +8,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@
+      uses: actions/checkout@v3
+
+    - name: Do nothing
+      run: echo "This job does nothing."
