@@ -24,7 +24,7 @@ struct Stack
 
         void push(const T& element);
 
-        void push(T&& element)
+        void push(T&& element);
 
         void pop();
 
