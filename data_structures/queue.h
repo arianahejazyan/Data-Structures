@@ -5,75 +5,83 @@ namespace Ariana
 {
 
 template<typename T>
-struct Queue // FIFO
+struct Queue
 {
     private:
 
         struct Node;
 
-        Node* m_front;
-        Node* m_rear;
+        Node* front;
+        Node* back;
 
     public:
 
-        void push(const T& item);
+        Queue();
 
-        void push(T&& item);
+        ~Queue();
 
-        void pop();
+        template<typename... Args>
+        void emplace(Args&&... args);
 
-        T& front();
+        void enQueue(const T& element);
 
-        const T& front() const;
+        void enQueue(T&& element);
+
+        void deQueue();
+
+        T& getFront();
+
+        T& getBack();
 };
-
-template<typename T>
-void Queue<T>::push(const T& item) {
-    Node* node = new Node(item);
-    if (m_rear) {
-        node->next = m_rear;
-        m_rear = node;
-    } else {
-        m_front = m_rear = node;
-    }node;
-}
-
-template<typename T>
-void Queue<T>::push(T&& item) {
-    Node* node = new Node(std::move(item));
-    if (m_rear) {
-        node->next = m_rear;
-        m_rear = node;
-    } else {
-        m_front = m_rear = node;
-    }
-}
-
-template<typename T>
-void Queue<T>::pop() {
-    if (m_front) {
-        Node* tmp = m_front;
-        m_front = m_front->next;
-        delete tmp;
-    }
-}
-template<typename T>
-T& Queue<T>::front() {
-    return m_front->data;
-}
-
-template<typename T>
-const T& Queue<T>::front() const {
-    return m_front->data;
-}
 
 template<typename T>
 struct Queue<T>::Node
 {
-    public:
+    T data;
+    Node* next;
 
-        T data;
-        Node* next;
+    Node(const T& data): data(data), next(nullptr) {}
+
+    Node(T&& data);
+
+    ~Node() = default;
 };
+
+template<typename T>
+Queue<T>::Queue(): front(nullptr), back(nullptr) {}
+
+template<typename T>
+Queue<T>::~Queue() = default;
+
+template<typename T>
+template<typename... Args>
+void Queue<T>::emplace(Args&&... args) {
+
+}
+
+template<typename T>
+void Queue<T>::enQueue(const T& element) {
+
+}
+
+template<typename T>
+void Queue<T>::enQueue(T&& element) {
+
+}
+
+template<typename T>
+void Queue<T>::deQueue() {
+
+}
+
+template<typename T>
+T& Queue<T>::getFront() {
+    return front->data;
+}
+
+template<typename T>
+T& Queue<T>::getBack() {
+    return back->data;
+}
 
 }; // namespace
