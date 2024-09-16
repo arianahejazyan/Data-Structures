@@ -1,5 +1,5 @@
 #pragma once
-#include <cstddef>
+#include "utility.h"
 
 namespace Ariana
 {
@@ -9,32 +9,46 @@ struct Matrix
 {
     private:
 
-        T* m_elements;
-        size_t m_rows;
-        size_t m_cols;
+        T* elements;
+        S rows;
+        S cols;
 
     public:
 
-        Matrix(size_t rows, size_t cols);
+        Matrix(S m, S n);
 
         ~Matrix();
 
-        T& operator()(size_t i, size_t j) const;
+        T& operator()(S i, S j);
+
+        S getRows() const;
+
+        S getCols() const;
 };
 
 template<typename T>
-Matrix<T>::Matrix(size_t rows, size_t cols): m_rows(rows), m_cols(cols) {
-    m_elements = new T[m_rows * m_cols];
+Matrix<T>::Matrix(S m, S n): rows(m), cols(n) {
+    elements = new T[rows * cols];
 }
 
 template<typename T>
 Matrix<T>::~Matrix() {
-    delete[] m_elements;
+    delete[] elements;
 }
 
 template<typename T>
-T& Matrix<T>::operator()(size_t i, size_t j) const {
-    return m_elements[i * m_cols + j];
+T& Matrix<T>::operator()(S i, S j) {
+    return elements[i * cols + j];
+}
+
+template<typename T>
+S Matrix<T>::getRows() const {
+    return rows;
+}
+
+template<typename T>
+S Matrix<T>::getCols() const {
+    return cols;
 }
 
 }; // namespace
