@@ -1,0 +1,4 @@
+add_subdirectory(deep_learning)
+add_subdirectory(reinforcement_learning)
+add_subdirectory(supervised_learning)
+add_subdirectory(unsupervised_learning)

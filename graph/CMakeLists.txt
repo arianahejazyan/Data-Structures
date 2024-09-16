@@ -1,0 +1,3 @@
+add_subdirectory(minimum_spanning_tree)
+add_subdirectory(shortest_path)
+add_subdirectory(traversal)
