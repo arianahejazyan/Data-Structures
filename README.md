@@ -1,6 +1,6 @@
 <div align="center">
 
-  [![CI - Tests](https://github.com/arianahejazyan/data-structures-and-algorithms/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/arianahejazyan/data-structures-and-algorithms/actions/workflows/tests.yml)
+  [![CI - Tests](https://github.com/arianahejazyan/data-structures-and-algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/arianahejazyan/data-structures-and-algorithms/actions/workflows/tests.yml)
 
 </div>
 
