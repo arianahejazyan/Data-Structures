@@ -1,5 +1,0 @@
-add_subdirectory(decomposition)
-add_subdirectory(factorization)
-add_subdirectory(multiplication)
-add_subdirectory(norms)
-add_subdirectory(solvers)
